@@ -1,0 +1,1 @@
+webpackJsonp([10],{50:function(t,e,n){"use strict";var o=n(2),s=Backbone,c=s.$;t.exports=function(t){var e=c(t).closest(".login-screen");setTimeout(function(){(0,o.initStatusBar)("#00b579"),e.trigger("close:modal")},1e3)}}});
