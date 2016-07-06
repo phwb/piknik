@@ -1,0 +1,76 @@
+doctype
+html(lang='ru', xmlns:xlink='http://www.w3.org/1999/xlink')
+  head
+    meta(charset='utf-8')
+    meta(name='format-detection', content='telephone=no')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black')
+    meta(http-equiv='Content-Security-Policy', content='' +
+      'default-src data: *; ' +
+      'script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' *; ' +
+      'style-src  \'self\' \'unsafe-inline\' *')
+
+    title Пикник 2016
+    link(rel='stylesheet', href='./js/vendor/framework7/css/framework7.ios.min.css')
+    link(rel='stylesheet', href='./css/common.css')
+    link(rel='stylesheet', href='./css/style.css')
+  body
+    #svg-icons
+
+    .statusbar-overlay
+
+    .panel-overlay
+    .panel.panel-left.panel-reveal
+
+    .views
+      .view.view-main
+        .navbar
+          .navbar-inner.b-header
+            .center
+              svg.logo
+                use(xlink:href='#icon_picnic')
+            a.link.open-panel.b-nav-button.b-header__nav-button(href='#')
+              .b-nav-button__body
+                .b-nav-button__item.b-nav-button__item_top
+                .b-nav-button__item.b-nav-button__item_center
+                .b-nav-button__item.b-nav-button__item_bottom
+
+        .pages.navbar-through
+          .page.page-on-center(data-page='main')
+            .page-content.pull-to-refresh-content
+              .pull-to-refresh-layer
+                .preloader
+                .pull-to-refresh-arrow
+              .content-block
+                .content-block-inner
+                  .b-main-teasers
+              .empty-page(data-text='Загрузка зон...')
+
+            include ./ui/toolbar.pug
+
+    .login-screen.modal-in
+      .view.navbar-through
+        .page(data-page='splash')
+          .page-content
+            .developers
+              .developers-icon
+                a(href='http://ugraweb.ru', class='external', target='_system')
+                  svg.developers__icon: use(xlink:href='#icon_ugraweb')
+              .developers-text
+                | Разработка сайтов
+                br
+                | и мобильных приложений,
+                br
+                | комплексное сопровождение
+              .developers-loader
+              .developers-link
+                a.developers__link(href='http://ugraweb.ru', class='external', target='_system')
+                  span.developers__http http://
+                  | ugraweb.ru
+
+    if dev === false
+      script(src='./cordova.js')
+    script(src='./js/vendor/svg.js')
+    script(src='./js/vendor/vendor.js')
+    script(src='./js/app/init.js')

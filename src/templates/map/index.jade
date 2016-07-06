@@ -1,0 +1,54 @@
+.navbar
+  .navbar-inner
+    .left
+      a.back.b-nav-button.link.b-back(href='#'): svg.b-back__icon: use(xlink:href='#icon_back')
+    .center.sliding Карта
+    .right
+      a.link.b-nav-button(href='#', id='watch-me')
+        svg.b-filter-ctrl__icon
+          use(xlink:href='#icon_map-location')
+      a.link.open-panel.b-nav-button(href='#')
+        .b-nav-button__body
+          .b-nav-button__item.b-nav-button__item_top
+          .b-nav-button__item.b-nav-button__item_center
+          .b-nav-button__item.b-nav-button__item_bottom
+    //.subnavbar.subnavbar-no-space
+      .b-tab-nav
+        a.tab-link.b-tab-nav__item(href='#map-map') Карта
+        a.tab-link.b-tab-nav__item(href='#map-friends', class='active') Друзья
+        a.tab-link.b-tab-nav__item(href='#map-info') Информация
+.pages
+  //.page.with-subnavbar.page-no-space(data-page='map')
+  .page.page-no-space(data-page='map')
+    .page-content
+      .tabs.b-tabs
+        .tab.b-tabs__item(id='map-map', class='active')
+          .empty-page(data-text='Загрузка карты...')
+        //.tab.b-tabs__item(id='map-friends')
+          .b-tabs__content.b-tabs__content_nospace
+            .b-list
+              ul#friends-list.b-list__lst
+            p Можно добавить не более 5 друзей
+            #friends-form
+              p
+                label(for='friend-code') Код друга
+                input#friend-code(type='number')
+              p
+                label(for='friend-name') Имя друга
+                input#friend-name(type='text')
+              p
+                a#friend-add.button(href='#') Добавить
+        //.tab.b-tabs__item(id='map-info')
+          .b-tabs__content.b-tabs__content_page-bg
+            p Вы можете видеть на карте не только себя, но и своих друзей или родственников!
+            p У каждого пользователя приложения есть уникальный код. Введите его на вкладке "Друзья"
+              | и перейдите на карту - если у пользоателя включен GPS и работает приложение, вы будете
+              | видеть его на карте. Метки друзей будут обновляться каждые 10 секнуд
+            p Сообщите вашим друзьям свой код, чтобы они могли добавить вас к себе на карту
+            p Ваш код:
+              =' '
+              b#server-id
+            p Приложение не передает ни каких личных данных пользоватлей, кроме его GPS координат
+
+    include ../ui/toolbar.pug
+

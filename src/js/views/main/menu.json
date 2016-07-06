@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Главная",
+    "link": "index.html",
+    "external": false
+  },
+  {
+    "name": "Моё расписание",
+    "link": "cabinet/index.html",
+    "external": false
+  },
+  {
+    "name": "Карта мероприятия",
+    "link": "map/index.html",
+    "external": false
+  },
+  {
+    "name": "Опросы",
+    "link": "polls/index.html",
+    "external": false
+  },
+  {
+    "name": "О разработчиках",
+    "link": "developers/index.html",
+    "external": false
+  }
+]

@@ -1,0 +1,29 @@
+.navbar
+  .navbar-inner
+    .left
+      a.back.b-nav-button.link.b-back(href='#'): svg.b-back__icon: use(xlink:href='#icon_back')
+    .center.sliding.navbar-title Площадки
+    .right
+      a.link.open-panel.b-nav-button(href='#')
+        .b-nav-button__body
+          .b-nav-button__item.b-nav-button__item_top
+          .b-nav-button__item.b-nav-button__item_center
+          .b-nav-button__item.b-nav-button__item_bottom
+    .subnavbar.subnavbar-no-space
+      .b-tab-nav
+        a.tab-link.b-tab-nav__item(href='#place-schedule', class='active') Расписание
+        a.tab-link.b-tab-nav__item(href='#place-info', id='link-info') Информация
+.pages
+  .page.with-subnavbar.page-no-space(data-page='place-detail')
+    .page-content
+      .tabs.b-tabs
+        .tab.b-tabs__item(id='place-schedule', class='active')
+          .b-tabs__content.b-tabs__content_nospace.pull-to-refresh-content(style='height: 100%')
+            .pull-to-refresh-layer
+              .preloader
+              .pull-to-refresh-arrow
+            .b-list
+            .empty-page(data-text='Расписания пока нет :(')
+        .tab.b-tabs__item(id='place-info')
+          .b-tabs__content.b-tabs__content_page-bg
+    include ../ui/toolbar.pug
