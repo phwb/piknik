@@ -24,8 +24,8 @@ const plumberOptions = {
   errorHandler: notify.onError()
 };
 
-let apiUrl = 'http://api.picnic.probitrix.com';
-// let apiUrl = 'http://utro2016.probitrix.com/local/api';
+let apiUrl = 'http://picnic.ugraweb.ru';
+// let apiUrl = 'http://api.picnic.probitrix.com';
 let path = 'build';
 
 let isDev = () => path === 'build';
