@@ -15,6 +15,10 @@ let Config = Backbone.Model.extend({
       return this.trigger('serverID:receive', 'success');
     }
 
+    if (token === 'error') {
+      return this.trigger('serverID:receive', 'error');
+    }
+    
     // если его нет, то получим его с сервера
     let ajax = Backbone.ajax;
     let params = {

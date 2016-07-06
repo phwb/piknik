@@ -190,8 +190,7 @@ export function initPushwoosh() {
     });
 
     if (!window.device) {
-      // success('browser');
-      error();
+      success('browser');
       return false;
     }
 
