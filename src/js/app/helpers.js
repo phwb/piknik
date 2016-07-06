@@ -12,8 +12,13 @@ import registerPushwooshAndroid from './pushwoosh/android';
 import registerPushwooshIOS     from './pushwoosh/ios';
 // import SendCoordinates          from './send-coords';
 
+let {$} = Backbone;
+
 // + инициализация StatusBar
 export function initStatusBar(color = '#31b5e8') {
+  $('.statusbar-overlay').css({
+    backgroundColor: color
+  });
   if (!window.hasOwnProperty('StatusBar')) {
     return false;
   }
@@ -26,7 +31,6 @@ export function initStatusBar(color = '#31b5e8') {
 /**
  * самая простая функция автообновления раз в 60 секунд
  */
-let $ = Backbone.$;
 function searchNewNotify() {
   let newer = notify.filter(model => {
     let params = model.toJSON();
