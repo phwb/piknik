@@ -173,39 +173,40 @@ function pushCallback() {
 
 export function initPushwoosh() {
   function success(token) {
-    config.set({token: token});
+    let savedToken = config.get('token');
+    if (token !== savedToken) {
+      config.set({token: token});
+    }
   }
 
   function error() {
     config.set({token: 'error'});
   }
 
-  return new Promise(resolve => {
-    // событие срабатывает когда получили токен из PushWoosh'а
-    // и отправили его на сервер для получения серверного ID
-    config.on('serverID:receive', status => {
-      switch (status) {
-        case 'success':
-          return resolve();
-        default:
-          console.log('Не удалось получить персональный номер!');
-          resolve();
-      }
-    });
-
-    if (!window.device) {
-      success('browser');
-      return false;
-    }
-
-    if (device.platform.toLowerCase() === 'android') {
-      registerPushwooshAndroid(pushCallback, success, error);
-    }
-
-    if (device.platform.toLowerCase() === 'iphone' || device.platform.toLowerCase() === 'ios') {
-      registerPushwooshIOS(pushCallback, success, error);
+  // событие срабатывает когда получили токен из PushWoosh'а
+  // и отправили его на сервер для получения серверного ID
+  config.on('serverID:receive', status => {
+    switch (status) {
+      case 'success':
+        return true;
+      default:
+        console.log('Не удалось получить персональный номер!');
+        return false;
     }
   });
+
+  if (!window.device) {
+    setTimeout(() => success('browser'), 1000);
+    return false;
+  }
+
+  if (device.platform.toLowerCase() === 'android') {
+    registerPushwooshAndroid(pushCallback, success, error);
+  }
+
+  if (device.platform.toLowerCase() === 'iphone' || device.platform.toLowerCase() === 'ios') {
+    registerPushwooshIOS(pushCallback, success, error);
+  }
 }
 // - инициализация pushwoosh
 
