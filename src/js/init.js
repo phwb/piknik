@@ -60,6 +60,7 @@ let app = new Framework7({
   animateNavBackIcon: true,
   init: false
 });
+window.app = app;
 
 // инициализация роутера
 initRouter(app);
@@ -68,6 +69,10 @@ initRouter(app);
 let mainView = app.addView('.view-main', {
   dynamicNavbar: true
 });
+// грязный хак, чтобы F7 не обрабатывал клик по
+// кнопке "Домик" (главная страница) при первой загрузке
+mainView.history = ['index.html'];
+mainView.url = 'index.html';
 
 // коллбек функция для initSync
 function initSyncCallback() {

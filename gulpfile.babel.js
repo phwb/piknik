@@ -30,7 +30,7 @@ let path = 'build';
 
 let isDev = () => path === 'build';
 
-export const clean = () => del('./' + path);
+export const clean = () => del(`./${path}`);
 
 export function assets() {
   let vendor = [
@@ -169,24 +169,39 @@ export function serve() {
 }
 
 export function config() {
+  let p = path === 'cordova/www' ? 'cordova' : path;
   return gulp.src(`./src/app/config.pug`)
     .pipe(plumber(plumberOptions))
     .pipe(pug({
-      pretty: true
+      pretty: true,
+      data: {
+        dev: isDev()
+      }
     }))
     .pipe(rename({
       extname: '.xml'
     }))
-    .pipe(gulp.dest(`./${path}`));
+    .pipe(gulp.dest(`./${p}`));
 }
 
 export function appAssets() {
-  return gulp.src('./src/app/res/**').pipe(gulp.dest(`./${path}/res`));
+  let p = path === 'cordova/www' ? 'cordova' : path;
+  return gulp.src('./src/app/res/**').pipe(gulp.dest(`./${p}/res`));
 }
 
 export const phonegap = gulp.series(
   cb => {
     path = 'phonegap';
+    cb();
+  },
+  clean,
+  config,
+  gulp.parallel(views, assets, appAssets, webpack)
+);
+
+export const cordova = gulp.series(
+  cb => {
+    path = 'cordova/www';
     cb();
   },
   clean,

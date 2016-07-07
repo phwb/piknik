@@ -1,6 +1,9 @@
 build/
 .idea/
 psd/
+cordova/
+cert/
+phonegap/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### JetBrains template
@@ -105,8 +108,3 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-
-
-/cert
-/phonegap
-/app

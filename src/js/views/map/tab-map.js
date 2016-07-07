@@ -8,13 +8,6 @@ let params = {
   maximumAge: 0
 };
 let {$} = Backbone;
-/*let icons = [
-  'islands#blackStretchyIcon',
-  'islands#darkGreenStretchyIcon',
-  'islands#darkOrangeStretchyIcon',
-  'islands#oliveStretchyIcon',
-  'islands#blueStretchyIcon'
-];*/
 let watchMe = false;
 
 class TabMap extends Backbone.View {
@@ -30,7 +23,6 @@ class TabMap extends Backbone.View {
     this.map = null;
     this.placemark = null;
     this.watchID = null;
-    this.friendsPlacemark = {};
   }
 
   render(ymaps) {
@@ -149,62 +141,8 @@ class TabMap extends Backbone.View {
     if (this.watchID) {
       navigator.geolocation.clearWatch(this.watchID);
     }
-
     return this;
   }
-
-  /*startRenderFriends() {
-    let serverID = config.get('serverID');
-    if (!serverID) {
-      return this;
-    }
-
-    let params = {
-      url: `${API_URL}/device/${serverID}/friends`,
-      type: 'get',
-      dataType: 'json'
-    };
-    ajax(params)
-      .done(this.ajaxDone.bind(this))
-      .fail(this.ajaxFail.bind(this));
-
-    return this;
-  }
-
-  ajaxFail() {
-
-  }
-
-  ajaxDone(data) {
-    if (data.length > 0) {
-      data.forEach(this.updateFriendsPlacemark, this);
-    }
-    setTimeout(this.startRenderFriends.bind(this), 3000);
-  }
-
-  updateFriendsPlacemark(item) {
-    let code = item.ID;
-    let placemark = this.friendsPlacemark[code];
-    let coords = [];
-
-    if (item.LAT && item.LONG) {
-      coords.push(parseFloat(item.LAT));
-      coords.push(parseFloat(item.LONG));
-    }
-
-    if (placemark) {
-      placemark.geometry.setCoordinates(coords);
-    } else if (coords.length > 0) {
-      placemark = new this.ymaps.Placemark(coords, {
-        iconContent: item.NAME
-      }, {
-        preset: icons.pop()
-      });
-      this.map.geoObjects.add(placemark);
-
-      this.friendsPlacemark[code] = placemark;
-    }
-  }*/
 }
 
 export default TabMap;
