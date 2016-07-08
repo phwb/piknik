@@ -18,12 +18,13 @@
     .page-content
       .tabs.b-tabs
         .tab.b-tabs__item(id='place-schedule', class='active')
-          .b-tabs__content.b-tabs__content_nospace.pull-to-refresh-content(style='height: 100%')
-            .pull-to-refresh-layer
-              .preloader
-              .pull-to-refresh-arrow
-            .b-list
-            .empty-page(data-text='Расписания пока нет :(')
+          .b-tabs__content.b-tabs__content_nospace
+            .pull-to-refresh-content
+              .pull-to-refresh-layer
+                .preloader
+                .pull-to-refresh-arrow
+              .b-list
+              .empty-page(data-text='Расписания пока нет :(')
         .tab.b-tabs__item(id='place-info')
           .b-tabs__content.b-tabs__content_page-bg
     include ../ui/toolbar.pug

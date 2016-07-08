@@ -1,3 +1,4 @@
+/* global cordova */
 'use strict';
 
 export default function registerPushwooshAndroid(
@@ -18,4 +19,5 @@ export default function registerPushwooshAndroid(
 
 	// register for push notifications
 	pushNotification.registerDevice(success, error);
+  pushNotification.setMultiNotificationMode(() => {}, () => {});
 }

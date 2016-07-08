@@ -670,6 +670,10 @@ textarea {
   width: 43px;
   height: 41px;
 }
+.b-main-teasers__icon_auto {
+  width: 72px;
+  height: 60px;
+}
 .b-main-teasers__h, .b-main-teasers__sub-h {
   letter-spacing: 1px;
   font-size: 1.3rem;
@@ -1103,11 +1107,11 @@ textarea {
 /* ---------------------------------------END--- */
 /* b-tabs */
 /* --------------------------------------------- */
-.b-tabs {
+/*.b-tabs {
   height: 100%;
-}
+}*/
 .b-tabs__item {
-  height: 100%;
+  /*height: 100%;*/
   padding-bottom: 0 !important;
 }
 .b-tabs__content {
@@ -2344,6 +2348,7 @@ textarea {
 .b-main-teasers__item_turist {background: #999900}
 .b-main-teasers__item_scena  {background: #666633}
 .b-main-teasers__item_tradi  {background: #009966}
+.b-main-teasers__item_auto   {background: #707070}
 .b-list__day-place {
   font-weight: normal;
   font-size: 1.3rem;
