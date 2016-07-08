@@ -1,17 +1,17 @@
 {
   "name": "utro2016",
   "version": "0.0.1",
-  "description": "Моблильное приложение форума Утро 2016",
-  "main": "index.js",
+  "description": "Моблильное приложение Пикник 2016",
+  "main": "src/js/init.js",
   "scripts": {
     "gulp": "./node_modules/.bin/gulp"
   },
   "keywords": [
-    "утро2016"
+    "пикникхм"
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/phwb/utro2016.git"
+    "url": "git+ssh://github.com/phwb/piknik.git"
   },
   "author": "phweb",
   "license": "MIT",
