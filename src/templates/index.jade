@@ -27,9 +27,13 @@ html(lang='ru', xmlns:xlink='http://www.w3.org/1999/xlink')
       .view.view-main
         .navbar
           .navbar-inner.b-header
-            .center
-              svg.logo
+            .left
+              .b-logo__header ПИКНИК
+              =' '
+              svg.b-logo__icon
                 use(xlink:href='#icon_picnic')
+              =' '
+              .b-logo__year 2016
             a.link.open-panel.b-nav-button.b-header__nav-button(href='#')
               .b-nav-button__body
                 .b-nav-button__item.b-nav-button__item_top

@@ -309,10 +309,10 @@ textarea {
   margin-left: -5px;
 }
 .b-logo__icon {
-  width: 13px;
-  height: 13px;
+  width: 24px;
+  height: 24px;
   position: relative;
-  margin-left: -4px;
+  margin: 0 7px 3px 2px;
   display: inline-block;
 }
 
