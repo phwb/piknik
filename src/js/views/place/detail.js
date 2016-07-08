@@ -134,6 +134,7 @@ class Page extends PullDown {
     // кэшируем табы
     this.$schedule = this.$('#place-schedule');
     this.$info = this.$('#place-info .b-tabs__content');
+    this.$shake = this.$('.toolbar-calendar');
 
     // установим заголовок экрана
     setTitle(this.model);
