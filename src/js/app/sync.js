@@ -415,8 +415,12 @@ export function setPollFields(model, params) {
         }
         reject(new Error('Голосование не доступно, повторите попытку позже!'));
       })
-      .fail(() => {
-        reject(new Error('Ошибка интернет соединения!'));
+      .fail(xhr => {
+        let message = 'Ошибка интернет соединения!';
+        if (xhr.status === 406) {
+          message = xhr.responseJSON.MESSAGE;
+        }
+        reject(new Error(message));
       });
   });
 }

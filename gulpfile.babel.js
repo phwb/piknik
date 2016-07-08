@@ -35,6 +35,7 @@ export const clean = () => del(`./${path}`);
 export function assets() {
   let vendor = [
     './node_modules/framework7/dist/js/framework7.js',
+    // './node_modules/framework7/custom/js/framework7.custom.js', // gulp custom -modals,pull-to-refresh,tabs,fast-clicks
     './node_modules/jquery/dist/jquery.js',
     './node_modules/underscore/underscore.js',
     './node_modules/backbone/backbone.js',

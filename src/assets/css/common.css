@@ -575,7 +575,7 @@ textarea {
           flex-wrap: wrap;
 }
 .b-main-teasers__item {
-
+  background: #212121;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -671,8 +671,8 @@ textarea {
   height: 41px;
 }
 .b-main-teasers__icon_auto {
-  width: 72px;
-  height: 60px;
+  width: 45px;
+  height: 32px;
 }
 .b-main-teasers__h, .b-main-teasers__sub-h {
   letter-spacing: 1px;
@@ -2413,4 +2413,8 @@ textarea {
 }
 .svg-yellow {
   color: #FFDB11;
+}
+.b-logo__info {
+  width: 20px;
+  height: 20px;
 }

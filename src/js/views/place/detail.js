@@ -167,8 +167,17 @@ class Page extends PullDown {
       return this;
     }
 
-    schedule.sort(function(a, b) {
-      return a.get('start') - b.get('start');
+    schedule.sort(function (a, b) {
+      let aSize = a.get('start');
+      let bSize = b.get('start');
+      let aLow = +a.get('sort');
+      let bLow = +b.get('sort');
+
+      if (aSize === bSize) {
+        return (aLow < bLow) ? -1 : (aLow > bLow) ? 1 : 0;
+      } else {
+        return (aSize < bSize) ? -1 : 1;
+      }
     });
 
     let list = new ScheduleList({
