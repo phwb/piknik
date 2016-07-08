@@ -191,6 +191,7 @@ class Sync {
 
   ajaxError(reject) {
     reject(new Error('Ошибка ajax запроса'));
+    return this;
   }
 
   update({timestamp = false, method = 'update', force = true} = {}) {
@@ -257,7 +258,16 @@ class Sync {
       // подготавливаем параметры для вставки в коллекцию
       let params = items
         .map(item => getModelParams(item, syncMap))
-        .map(item => _.defaults(item, defaults));
+        .map(item => _.defaults(item, defaults))
+        .map(item => {
+          let model = collection.get(item.id);
+          // берем из БД сохраненное значение my
+          // иначе collection.set его перезатрет
+          if (model) {
+            item.my = model.get('my');
+          }
+          return item;
+        });
 
       // метод set достаточно умный, чтоб обновить или создать модель в коллекции
       // возвращает созданные/обновленные модели

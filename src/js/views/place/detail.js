@@ -127,13 +127,30 @@ export class ScheduleList extends Simple {
   }
 }
 
-class PullDownList extends PullDown {
-  initialize(params) {
+class Page extends PullDown {
+  initialize() {
     super.initialize();
 
-    this.$list = this.$('.b-list');
-    this.$shake = params.shake || null;
+    // кэшируем табы
+    this.$schedule = this.$('#place-schedule');
+    this.$info = this.$('#place-info .b-tabs__content');
 
+    // установим заголовок экрана
+    setTitle(this.model);
+  }
+
+  render() {
+    return this
+      .renderInfo()
+      .addAll();
+  }
+
+  renderInfo() {
+    let model = this.model;
+    let type = model.get('type');
+    let text = model.get('text');
+
+    this.$info[type === 'html' ? 'html' : 'text'](text);
     return this;
   }
 
@@ -159,77 +176,13 @@ class PullDownList extends PullDown {
     });
 
     this.$empty.hide();
-    this.$list.html( list.render().$el );
+    this.$schedule.html( list.render().$el );
+
+    return this;
   }
 
   addItem(model) {
     this.collection.set(model, {remove: false});
-  }
-}
-
-class Page extends Backbone.View {
-  initialize() {
-    // кэшируем табы
-    this.$schedule = this.$el.find('#place-schedule');
-    this.$info = this.$el.find('#place-info .b-tabs__content');
-
-    // установим заголово экрана
-    setTitle(this.model);
-  }
-
-  render() {
-    return this
-      ._renderInfo()
-      ._renderSchedule();
-  }
-
-  showInfoTab(id = '') {
-    let $link = $(`#link-${id}`);
-    let $tab = $(`#place-${id}`);
-
-    if ($link.length && $tab.length) {
-      [$link, $tab].forEach(
-        $el => $el
-          .addClass('active')
-          .siblings()
-          .removeClass('active')
-      );
-    }
-
-    return this;
-  }
-
-  /**
-   * рендер информации
-   *
-   * @private
-   * @returns {Page}
-   */
-  _renderInfo() {
-    let model = this.model;
-    let type = model.get('type');
-    let text = model.get('text');
-
-    this.$info[type === 'html' ? 'html' : 'text'](text);
-    return this;
-  }
-
-  /**
-   * рендер расписания
-   *
-   * @private
-   * @returns {Page}
-   */
-  _renderSchedule() {
-    let pull = new PullDownList({
-      el: this.$schedule,
-      collection: this.collection,
-      model: this.model,
-      shake: this.$('.toolbar-calendar')
-    });
-    pull.render();
-
-    return this;
   }
 }
 

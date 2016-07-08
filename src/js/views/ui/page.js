@@ -61,8 +61,8 @@ class PullDown extends Backbone.View {
     // когда вызывается функция update, либо когда когда сработал pull down
     this.listenTo(collection, 'add', this.addItem);
 
-    this.$pull = this.$el.find('.pull-to-refresh-content');
-    this.$empty = this.$el.find('.empty-page');
+    this.$pull = this.$('.pull-to-refresh-content');
+    this.$empty = this.$('.empty-page');
 
     let status = collection.status || false;
     if (status && status === 'pending') {
