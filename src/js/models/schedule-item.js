@@ -7,8 +7,10 @@ let ScheduleItem = Backbone.Model.extend({
     name: '',
     sort: 100,
     timestamp: 0,
-    start: '00:00',
+    start: 0,
+    startStr: '',
     end: 0,
+    endStr: '',
     placeID: '0',
     // флаг добавления в "Мое расписание"
     my: false
@@ -28,7 +30,9 @@ let ScheduleItem = Backbone.Model.extend({
     TIMESTAMP_X: 'timestamp',
     TIME_START: 'start',
     TIME_END: 'end',
-    PLACE_ID: 'placeID'
+    PLACE_ID: 'placeID',
+    TIME_START_STR: 'startStr',
+    TIME_END_STR: 'endStr'
   },
   sync: Backbone.localforage.sync('schedule-item')
 });
